@@ -9,6 +9,7 @@ Source1: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz
 Patch1: yp-tools-2.7-md5.patch
 Url: http://www.linux-nis.org/nis/
 Requires: ypbind
+Buildroot: %{_tmppath}/%{name}-root
 
 %description
 The Network Information Service (NIS) is a system which provides
