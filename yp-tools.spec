@@ -1,7 +1,7 @@
 Summary: NIS (or YP) client programs
 Name: yp-tools
 Version: 2.10
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPL
 Group: System/Configuration/Networking
 Source: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2
