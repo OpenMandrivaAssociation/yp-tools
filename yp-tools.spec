@@ -40,13 +40,13 @@ you'll need to install the ypserv package on one machine on the network.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR="$RPM_BUILD_ROOT" install
+rm -rf %{buildroot}
+make DESTDIR="%{buildroot}" install
 
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root,0755)
