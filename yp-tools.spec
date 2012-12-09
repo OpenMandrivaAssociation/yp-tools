@@ -1,7 +1,7 @@
 Summary: NIS (or YP) client programs
 Name: yp-tools
 Version: 2.10
-Release: %mkrel 6
+Release: %mkrel 8
 License: GPL
 Group: System/Configuration/Networking
 Source: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2
@@ -40,13 +40,13 @@ you'll need to install the ypserv package on one machine on the network.
 %make
 
 %install
-rm -rf %{buildroot}
-make DESTDIR="%{buildroot}" install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR="$RPM_BUILD_ROOT" install
 
 %find_lang %{name}
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root,0755)
@@ -59,4 +59,52 @@ rm -rf %{buildroot}
 /var/yp/nicknames
 
 
+
+
+
+%changelog
+* Sat May 07 2011 Oden Eriksson <oeriksson@mandriva.com> 2.10-6mdv2011.0
++ Revision: 671946
+- mass rebuild
+
+* Sat Dec 04 2010 Oden Eriksson <oeriksson@mandriva.com> 2.10-5mdv2011.0
++ Revision: 608261
+- rebuild
+
+* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2.10-4mdv2010.1
++ Revision: 519084
+- rebuild
+
+* Tue Dec 23 2008 Oden Eriksson <oeriksson@mandriva.com> 2.10-3mdv2009.1
++ Revision: 317943
+- rebuild
+
+* Tue Mar 04 2008 Oden Eriksson <oeriksson@mandriva.com> 2.10-2mdv2008.1
++ Revision: 178843
+- rebuild
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Fri Feb 16 2007 Olivier Thauvin <nanardon@mandriva.org> 2.10-1mdv2007.0
++ Revision: 121727
+- 2.10
+
+* Sat Jul 22 2006 Olivier Thauvin <nanardon@mandriva.org> 2.9-4mdv2007.0
++ Revision: 41833
+- rebuild
+- Import yp-tools
+
+* Fri Oct 21 2005 Olivier Thauvin <nanardon@mandriva.org> 2.9-3mdk
+- Fix non standard perm (rpmlint)
+
+* Fri Oct 21 2005 Olivier Thauvin <nanardon@mandriva.org> 2.9-2mdk
+- rebuild
+
+* Fri Aug 27 2004 Frederic Lepied <flepied@mandrakesoft.com> 2.9-1mdk
+- New release 2.9
 
