@@ -8,6 +8,7 @@ Source: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2
 Source1: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2.sign
 Patch1: yp-tools-2.7-md5.patch
 Url: http://www.linux-nis.org/nis/
+BuildRequires: tirpc-devel
 Requires: ypbind
 Buildroot: %{_tmppath}/%{name}-root
 
