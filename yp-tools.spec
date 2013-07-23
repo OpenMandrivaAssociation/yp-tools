@@ -3,7 +3,7 @@ Name:		yp-tools
 Version:	2.14
 Release:	1
 License:	GPL
-Group:		System/Networking
+Group:		System/Configuration/Networking
 Source0:	http://www.linux-nis.org/download/yp-tools/yp-tools-%{version}.tar.bz2
 Url:		http://www.linux-nis.org/nis/
 Requires:	ypbind
