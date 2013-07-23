@@ -1,16 +1,17 @@
-Summary: NIS (or YP) client programs
-Name: yp-tools
-Version: 2.10
-Release: %mkrel 8
-License: GPL
-Group: System/Configuration/Networking
-Source: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2
-Source1: ftp://ftp.kernel.org/pub/linux/utils/net/NIS/yp-tools-%{version}.tar.bz2.sign
-Patch1: yp-tools-2.7-md5.patch
-Url: http://www.linux-nis.org/nis/
-BuildRequires: tirpc-devel
-Requires: ypbind
-Buildroot: %{_tmppath}/%{name}-root
+Summary:	NIS (or YP) client programs
+Name:		yp-tools
+Version:	2.14
+Release:	1
+License:	GPL
+Group:		System/Networking
+Source0:	http://www.linux-nis.org/download/yp-tools/yp-tools-%{version}.tar.bz2
+Url:		http://www.linux-nis.org/nis/
+Requires:	ypbind
+# Not sent to upstream
+Patch0:		yp-tools-2.11-shadow.patch
+Patch3:		yp-tools-2.12-hash.patch
+Patch4:		yp-tools-2.12-crypt.patch
+Patch5:		yp-tools-2.12-adjunct.patch
 
 %description
 The Network Information Service (NIS) is a system which provides
@@ -34,78 +35,25 @@ you'll need to install the ypserv package on one machine on the network.
 
 %prep
 %setup -q
-%patch1 -p1 -b .md5
+%patch0 -p1 -b .shadow
+%patch3 -p1 -b .hash
+%patch4 -p1 -b .crypt
+%patch5 -p1 -b .adjunct
+autoreconf -fiv
 
 %build
-%configure --disable-domainname
+%configure2_5x --disable-domainname
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR="$RPM_BUILD_ROOT" install
+%makeinstall_std
 
 %find_lang %{name}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.lang
-%defattr(-,root,root,0755)
-%defattr(-,root,root)
 %doc AUTHORS COPYING README ChangeLog NEWS etc/nsswitch.conf
 %doc THANKS TODO
 %attr(0755, root, root) %{_bindir}/*
 %{_mandir}/*/*
 %attr(0755, root, root) %{_sbindir}/*
 /var/yp/nicknames
-
-
-
-
-
-%changelog
-* Sat May 07 2011 Oden Eriksson <oeriksson@mandriva.com> 2.10-6mdv2011.0
-+ Revision: 671946
-- mass rebuild
-
-* Sat Dec 04 2010 Oden Eriksson <oeriksson@mandriva.com> 2.10-5mdv2011.0
-+ Revision: 608261
-- rebuild
-
-* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2.10-4mdv2010.1
-+ Revision: 519084
-- rebuild
-
-* Tue Dec 23 2008 Oden Eriksson <oeriksson@mandriva.com> 2.10-3mdv2009.1
-+ Revision: 317943
-- rebuild
-
-* Tue Mar 04 2008 Oden Eriksson <oeriksson@mandriva.com> 2.10-2mdv2008.1
-+ Revision: 178843
-- rebuild
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Fri Feb 16 2007 Olivier Thauvin <nanardon@mandriva.org> 2.10-1mdv2007.0
-+ Revision: 121727
-- 2.10
-
-* Sat Jul 22 2006 Olivier Thauvin <nanardon@mandriva.org> 2.9-4mdv2007.0
-+ Revision: 41833
-- rebuild
-- Import yp-tools
-
-* Fri Oct 21 2005 Olivier Thauvin <nanardon@mandriva.org> 2.9-3mdk
-- Fix non standard perm (rpmlint)
-
-* Fri Oct 21 2005 Olivier Thauvin <nanardon@mandriva.org> 2.9-2mdk
-- rebuild
-
-* Fri Aug 27 2004 Frederic Lepied <flepied@mandrakesoft.com> 2.9-1mdk
-- New release 2.9
-
