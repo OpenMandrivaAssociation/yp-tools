@@ -1,7 +1,7 @@
 Summary:	NIS (or YP) client programs
 Name:		yp-tools
 Version:	2.14
-Release:	5
+Release:	6
 License:	GPL
 Group:		System/Configuration/Networking
 Source0:	http://www.linux-nis.org/download/yp-tools/yp-tools-%{version}.tar.bz2
