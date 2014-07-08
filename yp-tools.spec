@@ -7,6 +7,7 @@ Group:		System/Configuration/Networking
 Source0:	http://www.linux-nis.org/download/yp-tools/yp-tools-%{version}.tar.bz2
 Url:		http://www.linux-nis.org/nis/
 Requires:	ypbind
+BuildRequires:	gettext-devel
 # Not sent to upstream
 Patch0:		yp-tools-2.11-shadow.patch
 Patch3:		yp-tools-2.12-hash.patch
