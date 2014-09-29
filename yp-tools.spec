@@ -43,7 +43,7 @@ you'll need to install the ypserv package on one machine on the network.
 autoreconf -fiv
 
 %build
-%configure2_5x --disable-domainname
+%configure --disable-domainname
 %make
 
 %install
