@@ -5,7 +5,7 @@ Release:	8
 License:	GPL
 Group:		System/Configuration/Networking
 Source0:	http://www.linux-nis.org/download/yp-tools/yp-tools-%{version}.tar.bz2
-Url:		http://www.linux-nis.org/nis/
+Url:		https://www.linux-nis.org/nis/
 Requires:	ypbind
 BuildRequires:	gettext-devel 
 BuildRequires:	pkgconfig(libtirpc)
